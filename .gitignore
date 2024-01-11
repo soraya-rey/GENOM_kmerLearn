@@ -1,2 +1,7 @@
-database/archea/*
-database/bacteria/*
+profiles/archea/*
+profiles/archea_genes/*
+profiles/archea_protein/*
+profiles/bacteria/*
+profiles/bacteria_genes/*
+profiles/bacteria_protein/*
+database/*
