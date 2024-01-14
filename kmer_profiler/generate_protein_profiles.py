@@ -54,7 +54,8 @@ for file in archea_files:
   for k in k_to_do:
     path = archea_profiles + f'{k}-mers_profiles/'
     outfile_path = path + name
-
+    """
+    # computing individual proteins
     for index in np.array(list(dict.keys()))[random.sample(range(len(dict)), 50)]:
       # counting kmers
       counts = count_aa_kmers([dict[index]], k)
@@ -63,6 +64,14 @@ for file in archea_files:
 
       # writting profile spectrum and counts
       write_profile(counts, f'{outfile_path}.{protein}_profile.txt', k)
+    """
+    # computing full protein profile
+    # counting kmers
+    counts = count_aa_kmers(list(dict.values()), k)
+    occurences = counts.values()
+
+    # writting profile spectrum and counts
+    write_profile(counts, f'{outfile_path}_profile.full', k)
 
 # For bacterias
 nb = len(bacteria_files)
@@ -88,6 +97,7 @@ for file in bacteria_files:
     outfile_path = path + name
 
     # counting kmers
+    """
     for index in np.array(list(dict.keys()))[random.sample(range(len(dict)), 50)]:
       counts = count_aa_kmers([dict[index]], k)
       occurences = counts.values()
@@ -95,10 +105,19 @@ for file in bacteria_files:
 
       # writting profile spectrum and counts
       write_profile(counts, f'{outfile_path}.{protein}_profile.txt', k)
+    """
+    # computing full protein profile
+    # counting kmers
+    counts = count_aa_kmers(list(dict.values()), k)
+    occurences = counts.values()
+
+    # writting profile spectrum and counts
+    write_profile(counts, f'{outfile_path}_profile.full', k)
 
 
 # computing unique files combining all profiles for k-mers 
 for k in k_values.keys():
+  """
   outfile = f'{k}-mer_archea_protein.csv'
   path = archea_profiles + f'{k}-mers_profiles/'
   if not os.path.exists('./profiles/' + outfile):
@@ -109,4 +128,16 @@ for k in k_values.keys():
   path = bacteria_profiles + f'{k}-mers_profiles/'
   if not os.path.exists('./profiles/' + outfile):
     files = [file for file in os.listdir(path) if file[-len('.txt'):]=='.txt']
+    profile_fusion(files, path, k, './profiles/' + outfile)
+  """
+  outfile = f'{k}-mer_archea_full_protein.csv'
+  path = archea_profiles + f'{k}-mers_profiles/'
+  if not os.path.exists('./profiles/' + outfile):
+    files = [file for file in os.listdir(path) if file[-len('.full'):]=='.full']
+    profile_fusion(files, path, k, './profiles/' + outfile)
+
+  outfile = f'{k}-mer_bacteria_full_protein.csv'
+  path = bacteria_profiles + f'{k}-mers_profiles/'
+  if not os.path.exists('./profiles/' + outfile):
+    files = [file for file in os.listdir(path) if file[-len('.full'):]=='.full']
     profile_fusion(files, path, k, './profiles/' + outfile)
