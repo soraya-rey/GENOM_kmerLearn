@@ -8,4 +8,5 @@ Nous avons utilisé quatre méthodes:
 Sont également fourni:
 - une pipeline de création de la base de données -> database/script.py
 - les codes de générations des profiles -> kmer_profiler/generate_profiles.py (et deux autres pour les genes et les protéines)
-- les profiles utilisés pour l'entrainement des différentes méthodes
+- les profils utilisés pour l'entrainement des différentes méthodes
+- le code de création des images CGR -> kmer_CGR.ipynb
