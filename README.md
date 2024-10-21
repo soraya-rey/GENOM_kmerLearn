@@ -1,4 +1,4 @@
-# GENOM Project: Comprehensive Analysis of Prokaryotic Genomes Using Word Distribution
+# GENOM Project: Comprehensive Analysis of Prokaryotic Genomes Using k-mers Distribution
 
 **Authors:** Maëlys Delouis, Soraya Rey, Lorenzo Ballestra  
 **Date:** January 2024
